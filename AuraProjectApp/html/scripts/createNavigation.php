@@ -12,12 +12,32 @@
 	$SouthEastLat = $_GET['SouthWestLat'];
 	$SouthEastLng = $_GET['NorthEastLng'];
 
-	$cameraLager = 1;
-
+	$cameraLarger = 0.001;
+	$coeff = 1;
+	
+	/* Km */
 
 	$rectangleNorthFace = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($NorthWestLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($NorthWestLat))*cos(deg2rad		($NorthEastLng-$NorthWestLng)))*6371;
 	$rectangleEastFace = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($SouthEastLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($SouthEastLat))*cos(deg2rad		($NorthEastLng-$SouthEastLng)))*6371;
-	$rectangleNoFace = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($SouthEastLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($SouthEastLat))*cos(deg2rad		($NorthEastLng-$SouthEastLng)))*6371;
+	$rectangleSouthFace = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($SouthEastLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($SouthEastLat))*cos(deg2rad		($SouthWestLng-$SouthEastLng)))*6371;
+	$rectangleWestFace = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($NorthWestLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($NorthWestLat))*cos(deg2rad		($SouthWestLng-$NorthWestLng)))*6371;
+	echo 'North = '.$rectangleNorthFace.'<br/>';
+	echo 'South = '.$rectangleSouthFace.'<br/>';
+	echo 'East = '.$rectangleEastFace.'<br/>';
+	echo 'West = '.$rectangleWestFace.'<br/>';
+
+	if ((($rectangleNorthFace + $rectangleSouthFace)/2.0) >= (($rectangleEastFace + $rectangleWestFace)/2.0))
+	{
+		$division = (($rectangleNorthFace + $rectangleSouthFace)/(2.0*$coeff*$HeightQuadcopter*$cameraLarger));
+	}
+	else
+	{
+		$division = (($rectangleEastFace + $rectangleWestFace)/(2.0*$coeff*$HeightQuadcopter*$cameraLarger));
+	}
+
+	echo 'Division = '.$division;
+
+	
 
 
 	/*
