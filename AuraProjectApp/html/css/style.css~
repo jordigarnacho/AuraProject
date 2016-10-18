@@ -53,7 +53,7 @@
 	width : 75%;
 }
 
-#altitude input{
+#altitudeAttribute input{
 	margin-top : 5%;
 	height : 4%;
 	width : 15%;

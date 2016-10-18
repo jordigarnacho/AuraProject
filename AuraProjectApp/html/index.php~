@@ -23,7 +23,7 @@
 				<div id="address"> ou</br> <input name="addressAttribute" id="addressAttribute" type="text" name="adresse">
 					<input id="addressButton"type="button" name="validAddresse" value="OK" onclick="findAddress();">
 				</div>
-				<div id="altitude">Hauteur (m) : <input id="altitudeAttribute" type="text" name="altitude"></div>
+				<div id="altitude">Altitude (m) : <input id="altitudeAttribute" type="text" name="altitude"></div>
 				<div id="validButton"><input type="button" name="validate" value="Valider" onclick="rectangleDrawer();"></div>
 				<div id="downloadButton"><input type="button" name="download" value="Téléchager" onclick="wayDrawer();"></div>
 			</form>
