@@ -6,6 +6,8 @@
 	$SouthWestLng = $_GET['SouthWestLng'];
 	$Elevation = $_GET['Elevation'];
 	$HeightQuadcopter = $_GET['HeightQuadcopter'];
+	$StartLat = $_GET['StartLat'];
+	$StartLng = $_GET['StartLng'];
 	
 	$NorthWestLat = $_GET['NorthEastLat'];
 	$NorthWestLng = $_GET['SouthWestLng'];
@@ -13,7 +15,7 @@
 	$SouthEastLng = $_GET['NorthEastLng'];
 
 	$cameraLarger = 0.001;
-	$coeff = 1;
+	$cameraCoeff = 1;
 	
 	/* Km */
 
@@ -28,30 +30,65 @@
 
 	if ((($rectangleNorthFace + $rectangleSouthFace)/2.0) >= (($rectangleEastFace + $rectangleWestFace)/2.0))
 	{
-		$division = (($rectangleNorthFace + $rectangleSouthFace)/(2.0*$coeff*$HeightQuadcopter*$cameraLarger));
+		$division = (($rectangleNorthFace + $rectangleSouthFace)/(2.0*$cameraCoeff*$HeightQuadcopter*$cameraLarger));
 	}
 	else
 	{
-		$division = (($rectangleEastFace + $rectangleWestFace)/(2.0*$coeff*$HeightQuadcopter*$cameraLarger));
+		$division = (($rectangleEastFace + $rectangleWestFace)/(2.0*$cameraCoeff*$HeightQuadcopter*$cameraLarger)); 
 	}
 
-	echo 'Division = '.$division;
+	echo 'Division = '.$division.'<br/>';
 
-	
+	$startToNorthEast = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($StartLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($StartLat))*cos(deg2rad		($NorthEastLng-$StartLng)))*6371;
 
+	$startToNorthWest = acos(sin(deg2rad($NorthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($NorthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad		($NorthWestLng-$StartLng)))*6371;
 
-	/*
+	$startToSouthEast = acos(sin(deg2rad($SouthEastLat))*sin(deg2rad($StartLat))+cos(deg2rad($SouthEastLat))*cos(deg2rad($StartLat))*cos(deg2rad		($SouthEastLng-$StartLng)))*6371;
+
+	$startToSouthWest = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad		($SouthWestLng-$StartLng)))*6371;
+
+	echo $startToNorthEast.'<br/>';
+	echo $startToNorthWest.'<br/>';
+	echo $startToSouthEast.'<br/>';
+	echo $startToSouthWest.'<br/>';
+
+	if($startToNorthEast <= $startToNorthWest & $startToNorthEast <= $startToSouthEast & $startToNorthEast <= $startToSouthWest)
+	{
+		echo ("NordEast");
+	}
+	else
+	{
+		if($startToNorthWest <= $startToNorthEast & $startToNorthWest <= $startToSouthEast & $startToNorthWest <= $startToSouthWest)
+		{
+			echo ("NordWest");
+		}
+		else
+		{
+			if($startToSouthEast <= $startToNorthEast & $startToSouthEast <= $startToNorthWest & $startToSouthEast <= $startToSouthWest)
+			{
+				echo ("SouthEast");
+			}
+			else 
+			{
+				echo ("SouthWest");
+			}
+		}
+	}
+/*
+
 	$fileName = md5(microtime(TRUE)*100000);
 	$type = "application/csv";
 	$myFile = fopen('../navigationMaps/'.$fileName.'.csv', 'w');
     
-	for ($i = 0 ; isset($_GET['lat'.$i]) or isset($_GET['lng' . $i]); $i++)
-    {
+	for ($i = 1 ; $i<=$division ; $i++)
+    	{
+		$LocationLat = ;
+		$LocationLng = ;
 		fwrite ($myFile, $_GET['lat'.$i]); // On y met les données
 		fwrite ($myFile, ',');
 		fwrite ($myFile, $_GET['lng'.$i]); // On y met les données
 		fputs($myFile, "\n"); 
-    }
+    	}
 	
 	fclose($myFile);
 	
@@ -65,6 +102,7 @@
 	header("Expires: 0");
 	
 	//Envoi du fichier dont le chemin est passé en paramètre
-	readfile('../navigationMaps/'.$fileName.'.csv');*/
+	readfile('../navigationMaps/'.$fileName.'.csv');
+*/
 
 ?>

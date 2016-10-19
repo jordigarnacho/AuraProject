@@ -298,7 +298,7 @@ function wayDrawer() {
 						elevation = elevationNorthEast;
 					}
 
-					var url ="/scripts/createNavigation.php?NorthEastLat=" + rectangleNorthEast.lat() + "&NorthEastLng=" + rectangleNorthEast.lng() 						+ "&SouthWestLat=" + rectangleSouthWest.lat()+ "&SouthWestLng=" + rectangleSouthWest.lng() + "&Elevation=" + elevation + 						"&HeightQuadcopter=" + heightQuadcopter;
+					var url ="/scripts/createNavigation.php?NorthEastLat=" + rectangleNorthEast.lat() + "&NorthEastLng=" + rectangleNorthEast.lng() 						+ "&SouthWestLat=" + rectangleSouthWest.lat()+ "&SouthWestLng=" + rectangleSouthWest.lng() + "&Elevation=" + elevation + 						"&HeightQuadcopter=" + heightQuadcopter + "&startLat=" + globalMarker.getPosition().lat() + "&startLng=" + 						globalMarker.getPosition().lng();
 	
 					document.location.href = url;
 				}
