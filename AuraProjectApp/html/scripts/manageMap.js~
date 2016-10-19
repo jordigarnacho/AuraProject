@@ -198,8 +198,8 @@ function rectangleDrawer() {
 			fillOpacity: 0.35,
 			map: globalMap,
 			bounds: {
-				north: polygonNewCoords.getAt(indexMinLat).lat(),
-				south: polygonNewCoords.getAt(indexMaxLat).lat(),
+				north: polygonNewCoords.getAt(indexMaxLat).lat(),
+				south: polygonNewCoords.getAt(indexMinLat).lat(),
 				east: polygonNewCoords.getAt(indexMaxLng).lng(),
 				west: polygonNewCoords.getAt(indexMinLng).lng()
 			}
@@ -215,8 +215,8 @@ function rectangleDrawer() {
 			fillOpacity: 0.35,
 			map: globalMap,
 			bounds: {
-				north: polygonNewCoords.getAt(indexMinLat).lat()-0.000075,
-				south: polygonNewCoords.getAt(indexMaxLat).lat()+0.000075,
+				north: polygonNewCoords.getAt(indexMaxLat).lat()+0.000075,
+				south: polygonNewCoords.getAt(indexMinLat).lat()-0.000075,
 				east: polygonNewCoords.getAt(indexMaxLng).lng()+0.0001,
 				west: polygonNewCoords.getAt(indexMinLng).lng()-0.0001
 			}
@@ -227,16 +227,16 @@ function rectangleDrawer() {
 	{
 		
 		globalRectangle.setBounds({
-				north: polygonNewCoords.getAt(indexMinLat).lat(),
-				south: polygonNewCoords.getAt(indexMaxLat).lat(),
+				north: polygonNewCoords.getAt(indexMaxLat).lat(),
+				south: polygonNewCoords.getAt(indexMinLat).lat(),
 				east: polygonNewCoords.getAt(indexMaxLng).lng(),
 				west: polygonNewCoords.getAt(indexMinLng).lng()
 			}
 			);
 		
 		globalSecurityRectangle.setBounds({
-				north: polygonNewCoords.getAt(indexMinLat).lat()-0.0001,
-				south: polygonNewCoords.getAt(indexMaxLat).lat()+0.0001,
+				north: polygonNewCoords.getAt(indexMaxLat).lat()+0.000075,
+				south: polygonNewCoords.getAt(indexMinLat).lat()-0.000075,
 				east: polygonNewCoords.getAt(indexMaxLng).lng()+0.0001,
 				west: polygonNewCoords.getAt(indexMinLng).lng()-0.0001
 			}
@@ -298,7 +298,7 @@ function wayDrawer() {
 						elevation = elevationNorthEast;
 					}
 
-					var url ="/scripts/createNavigation.php?NorthEastLat=" + rectangleNorthEast.lat() + "&NorthEastLng=" + rectangleNorthEast.lng() 						+ "&SouthWestLat=" + rectangleSouthWest.lat()+ "&SouthWestLng=" + rectangleSouthWest.lng() + "&Elevation=" + elevation + 						"&HeightQuadcopter=" + heightQuadcopter + "&startLat=" + globalMarker.getPosition().lat() + "&startLng=" + 						globalMarker.getPosition().lng();
+					var url ="/scripts/createNavigation.php?NorthEastLat=" + rectangleNorthEast.lat() + "&NorthEastLng=" + rectangleNorthEast.lng() 						+ "&SouthWestLat=" + rectangleSouthWest.lat()+ "&SouthWestLng=" + rectangleSouthWest.lng() + "&Elevation=" + elevation + 						"&HeightQuadcopter=" + heightQuadcopter + "&StartLat=" + globalMarker.getPosition().lat() + "&StartLng=" + 						globalMarker.getPosition().lng();
 	
 					document.location.href = url;
 				}

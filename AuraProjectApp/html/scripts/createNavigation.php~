@@ -16,9 +16,15 @@
 
 	$cameraLarger = 0.001;
 	$cameraCoeff = 1;
+
+
+	echo 'NorthEast= ('.$NorthEastLat.','.$NorthEastLng.')<br/>';
+	echo 'NorthWest= ('.$NorthWestLat.','.$NorthWestLng.')<br/>';
+	echo 'SouthEast= ('.$SouthEastLat.','.$SouthEastLng.')<br/>';
+	echo 'SouthWest= ('.$SouthWestLat.','.$SouthWestLng.')<br/>';
 	
 	/* Km */
-
+	
 	$rectangleNorthFace = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($NorthWestLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($NorthWestLat))*cos(deg2rad		($NorthEastLng-$NorthWestLng)))*6371;
 	$rectangleEastFace = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($SouthEastLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($SouthEastLat))*cos(deg2rad		($NorthEastLng-$SouthEastLng)))*6371;
 	$rectangleSouthFace = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($SouthEastLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($SouthEastLat))*cos(deg2rad		($SouthWestLng-$SouthEastLng)))*6371;
@@ -39,13 +45,13 @@
 
 	echo 'Division = '.$division.'<br/>';
 
-	$startToNorthEast = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($StartLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($StartLat))*cos(deg2rad		($NorthEastLng-$StartLng)))*6371;
+	$startToNorthEast = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($StartLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($StartLat))*cos(deg2rad($NorthEastLng-$StartLng)))*6371;
 
-	$startToNorthWest = acos(sin(deg2rad($NorthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($NorthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad		($NorthWestLng-$StartLng)))*6371;
+	$startToNorthWest = acos(sin(deg2rad($NorthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($NorthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad($NorthWestLng-$StartLng)))*6371;
 
-	$startToSouthEast = acos(sin(deg2rad($SouthEastLat))*sin(deg2rad($StartLat))+cos(deg2rad($SouthEastLat))*cos(deg2rad($StartLat))*cos(deg2rad		($SouthEastLng-$StartLng)))*6371;
+	$startToSouthEast = acos(sin(deg2rad($SouthEastLat))*sin(deg2rad($StartLat))+cos(deg2rad($SouthEastLat))*cos(deg2rad($StartLat))*cos(deg2rad($SouthEastLng-$StartLng)))*6371;
 
-	$startToSouthWest = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad		($SouthWestLng-$StartLng)))*6371;
+	$startToSouthWest = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad($SouthWestLng-$StartLng)))*6371;
 
 	echo $startToNorthEast.'<br/>';
 	echo $startToNorthWest.'<br/>';
