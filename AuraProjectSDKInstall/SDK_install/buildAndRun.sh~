@@ -1,0 +1,7 @@
+#!/bin/bash
+
+prog=$1
+
+./build.sh -p Unix-base -t build-sdk
+source out/arsdk-native/staging/native-wrapper.sh
+out/arsdk-native/staging/usr/bin/$prog

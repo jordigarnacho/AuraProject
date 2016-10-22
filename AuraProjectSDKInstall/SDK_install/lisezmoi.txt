@@ -1,0 +1,51 @@
+Ce script permet d'installer automatiquement la version 3.8 du SDK 
+de Parrot.
+
+Ce SDK vous permet de contrôler tous les nouveaux drones de Parrot 
+(Bebop 2, Bebop, JumpingSumo et EVOS, Rouler Araignée, Airbornes) 
+d'un poste distant (peut-être un téléphone Android ou iOS ou même 
+un contrôleur basé sur Linux).
+
+Le SDK nécessite l'installation de plusieurs paquets qui seront 
+installés lors du lancement de ce script 
+(si les paquets ne sont pas déjà installés sur votre machine).
+
+Liste des paquets :
+- wget
+- automake
+- autoconf
+- libtool
+- yasm
+- nasm
+- g++
+- gcc
+- libswscale-dev
+- libavformat-dev
+- libavcodec-dev
+- libncurses5-dev
+- mplayer
+- libdbus-1-dev
+- libavahi-client-dev
+- libavahi-common-dev
+- git
+
+De plus, le script va créer 2 dossiers à la racine de votre dossier personnel :
+- Bin : dossier contenant des fichiers nécessaires à l'installation du SDK
+- SDK_drone : dossier contenant le SDK
+
+Une fois le SDK installé, il est possible d'exécuter les exemples présents dans 
+le répertoire en utilisant le fichier buildAndRun.sh . Pour l'utiliser il suffit
+de d'appeler celui-ci avec comme paramètre le nom de l'exemple.
+
+commande : bash buildAndRun.sh nom_exemple
+
+Les exemples fournient de base sont :
+- BebopDroneDecodeStream
+- BebopDroneReceiveStream
+- BebopPilotingNewAPI
+- JumpingSumoReceiveStream
+- JumpingSumoPilotingNewAPI
+- JumpingSumoPiloting
+- JumpingSumoChangePosture
+
+
