@@ -53,15 +53,9 @@
 
 	$startToSouthWest = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad($SouthWestLng-$StartLng)))*6371;
 
-	echo $startToNorthEast.'<br/>';
-	echo $startToNorthWest.'<br/>';
-	echo $startToSouthEast.'<br/>';
-	echo $startToSouthWest.'<br/>';
-
 	if($startToNorthEast <= $startToNorthWest & $startToNorthEast <= $startToSouthEast & $startToNorthEast <= $startToSouthWest)
 	{
 		echo ("NordEast");
-		for($i=0 ; $i < 
 	}
 	else
 	{
