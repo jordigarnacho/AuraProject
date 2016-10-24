@@ -1,3 +1,9 @@
+/*--------------------------------------
+----------------------------------------
+---- AURA PROJECT APP - MAP SCRIPTS ----
+----------------------------------------
+--------------------------------------*/
+
 /* Global variables*/
 
 var globalMap;
@@ -6,6 +12,8 @@ var globalPosition;
 var globalMarker;
 var globalRectangle;
 var globalSecurityRectangle;
+
+
 
 /* Function to find the user s GPS location via HTML5 */
 
@@ -16,6 +24,8 @@ function findLocation() {
 		alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
 	
 	function successCallback(position){
+		
+		/* Refresh Map Center with the user location */
 		var location = {lat:position.coords.latitude , lng:position.coords.longitude};
 		refreshMapCenter(location);
 	};  
@@ -23,17 +33,24 @@ function findLocation() {
 	function errorCallback(error){
 		switch(error.code){
 			case error.PERMISSION_DENIED:
+
+				/* Permission Denied Message */
 				alert("L'utilisateur n'a pas autorisé l'accès à sa position");
 				break;          
 			case error.POSITION_UNAVAILABLE:
+
+				/* Position Unavailable Message */
 				alert("L'emplacement de l'utilisateur n'a pas pu être déterminé");
 				break;
 			case error.TIMEOUT:
+
+				/* Timeout Message */
 				alert("Le service n'a pas répondu à temps");
 				break;
-			}
+		}
 	};
 }
+
 
 
 /* Function to find the GPS location of an address via Google Map API */
@@ -62,134 +79,172 @@ function findAddress() {
 }
 
 
+
 /* Map initialisation */
+
 function initMap() {
+
+	/* Initialisation Rectangle Height */
 	var rectangleHeight = 0.0004;
+
+	/* Initialisation Rectangle Width */
 	var rectangleWidth = 0.0004;
+
+	/* Initialisation GPS Location */
 	var GPSPosition = {lat:45.91926,lng:6.157999600000039};
+
+	/* Map creation - Google Map API */
 	var map = new google.maps.Map(document.getElementById('map'), {
-	zoom: 19,
-	center: GPSPosition,
-	scrollwheel: true,
-	mapTypeId: google.maps.MapTypeId.ROADMAP
+		zoom: 19,
+		center: GPSPosition,
+		scrollwheel: true,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
 	});
 
+	/* Initialisation Marker - Google Map API */
 	var marker = new google.maps.Marker({
-	position: GPSPosition,
-	map: map,
-	title: "Position GPS",
-	draggable:true
+		position: GPSPosition,
+		map: map,
+		title: "Position GPS",
+		draggable:true
 	});
 	
 	
-	/* Define the LatLng coordinates for the polygon's path */
-	var polygonCoords = [
-	{lat: GPSPosition.lat-(rectangleHeight/2), lng: GPSPosition.lng-(rectangleWidth/2)},
-	{lat: GPSPosition.lat-(rectangleHeight/2), lng: GPSPosition.lng+(rectangleWidth/2)},
-	{lat: GPSPosition.lat+(rectangleHeight/2), lng: GPSPosition.lng+(rectangleWidth/2)},
-	{lat: GPSPosition.lat+(rectangleHeight/2), lng: GPSPosition.lng-(rectangleWidth/2)}
-	];
-	
-	/* Draw the polygon */
-	var polygon = new google.maps.Polygon({
-	paths: polygonCoords,
-	strokeColor: '#FF0000',
-	strokeOpacity: 0.8,
-	strokeWeight: 2,
-	fillColor: '#FF0000',
-	fillOpacity: 0.35,
-	draggable:true,
-	editable:true
-	});
-	polygon.setMap(map);
-
-
-	globalMarker = marker;
-	globalPolygon = polygon;
-	globalMap = map;
-}
-
-/* Function for refresh the center of the map */
-
-function refreshMapCenter(GPSPosition) {
-	var rectangleHeight = 0.0004;
-	var rectangleWidth = 0.0004;
-	
-	/* Remove the last polygon */
-	globalPolygon.setMap(null);
-
+	/* Polygon s Path Initialisation */
 	var polygonCoords = [
 		{lat: GPSPosition.lat-(rectangleHeight/2), lng: GPSPosition.lng-(rectangleWidth/2)},
 		{lat: GPSPosition.lat-(rectangleHeight/2), lng: GPSPosition.lng+(rectangleWidth/2)},
 		{lat: GPSPosition.lat+(rectangleHeight/2), lng: GPSPosition.lng+(rectangleWidth/2)},
 		{lat: GPSPosition.lat+(rectangleHeight/2), lng: GPSPosition.lng-(rectangleWidth/2)}
-		];
+	];
 	
-	/* Draw the polygon */
+	/* Polygon creation */
 	var polygon = new google.maps.Polygon({
-	paths: polygonCoords,
-	strokeColor: '#FF0000',
-	strokeOpacity: 0.8,
-	strokeWeight: 2,
-	fillColor: '#FF0000',
-	fillOpacity: 0.35,
-	draggable:true,
-	editable:true
+		paths: polygonCoords,
+		strokeColor: '#FF0000',
+		strokeOpacity: 0.8,
+		strokeWeight: 2,
+		fillColor: '#FF0000',
+		fillOpacity: 0.35,
+		draggable:true,
+		editable:true
 	});
+	
+	/* Polygon-Map association */
+	polygon.setMap(map);
 
+	/* Global Variables Update */
+	globalMarker = marker;
+	globalPolygon = polygon;
+	globalMap = map;
+}
+
+
+
+/* Function for refresh the center of the map */
+
+function refreshMapCenter(GPSPosition) {
+	
+	/* Rectangle Height */
+	var rectangleHeight = 0.0004;
+
+	/* Rectangle Width */
+	var rectangleWidth = 0.0004;
+	
+	/* Remove the last polygon */
+	globalPolygon.setMap(null);
+
+	/* New Polygon s Path Initialisation */
+	var polygonCoords = [
+		{lat: GPSPosition.lat-(rectangleHeight/2), lng: GPSPosition.lng-(rectangleWidth/2)},
+		{lat: GPSPosition.lat-(rectangleHeight/2), lng: GPSPosition.lng+(rectangleWidth/2)},
+		{lat: GPSPosition.lat+(rectangleHeight/2), lng: GPSPosition.lng+(rectangleWidth/2)},
+		{lat: GPSPosition.lat+(rectangleHeight/2), lng: GPSPosition.lng-(rectangleWidth/2)}
+	];
+	
+	/* New Polygon Creation */
+	var polygon = new google.maps.Polygon({
+		paths: polygonCoords,
+		strokeColor: '#FF0000',
+		strokeOpacity: 0.8,
+		strokeWeight: 2,
+		fillColor: '#FF0000',
+		fillOpacity: 0.35,
+		draggable:true,
+		editable:true
+	});
+	
+	/* New Polygon-Map association */
 	polygon.setMap(globalMap);
+	
+	/* Global Polygon Variable Update */
 	globalPolygon = polygon;
 
-	/* Move marker, polygon and map center */
-
+	/* Move marker and map center */
 	globalMarker.setPosition(GPSPosition);
     	globalMap.panTo(GPSPosition);
 
+	/* Zoom Reset */
 	globalMap.setZoom(19);	
 }
 
 
-/* Function for calculate the minimum-bounding-boxes */
+
+/* Function for calculate the minimum rectangle */
 
 function rectangleDrawer() {
+
+	/* Polygon s Path Acquisition */
 	var polygonNewCoords = globalPolygon.getPath();
+
+	/* Main Points Initialisation */
 	var indexMaxLat = 0;
 	var indexMinLat = 0;
 	var indexMaxLng = 0;
 	var indexMinLng = 0;	
 	
 
-	// Iterate over the polygonNewCoords.
+	/* polygonNewCoords iteration to find max and min*/
 	for (var i =1; i < polygonNewCoords.getLength(); i++) {
 		var newPoint = polygonNewCoords.getAt(i);
 		
+		/* Latitude Minimum */
 		if (newPoint.lat() < polygonNewCoords.getAt(indexMinLat).lat())
 		{
 			indexMinLat = i;
 		}
+		
+		/* Not Latitude Minimum */
 		else
 		{
+			/* Latitude Maximum */
 			if (newPoint.lat() > polygonNewCoords.getAt(indexMaxLat).lat())
 			{
 				indexMaxLat = i;
 			}
 		}
 		
+		/* Longitude Minimum */
 		if (newPoint.lng() < polygonNewCoords.getAt(indexMinLng).lng())
 		{
 			indexMinLng = i;
 		}
+
+		/* Not Longitude Minimum */
 		else
 		{
+			/* Longitude Maximum */
 			if (newPoint.lng() > polygonNewCoords.getAt(indexMaxLng).lng())
 			{
 				indexMaxLng = i;
 			}
 		}		
 	}
-	
+
+	/* First Rectangle Creation */	
 	if (globalRectangle == null)
 	{
+		/* Rectangle creation */
 		var rectangle = new google.maps.Rectangle({
 			strokeColor: '#FF0000',
 			strokeOpacity: 0.8,
@@ -205,8 +260,10 @@ function rectangleDrawer() {
 			}
 		});
 		
+		/* Global Rectangle Variable Update */
 		globalRectangle = rectangle;
 		
+		/* Rectangle security creation */
 		var securityRectangle = new google.maps.Rectangle({
 			strokeColor: '#FFA500',
 			strokeOpacity: 0.3,
@@ -221,11 +278,15 @@ function rectangleDrawer() {
 				west: polygonNewCoords.getAt(indexMinLng).lng()-0.0001
 			}
 		});
+		
+		/* Global Rectangle Security Variable Update */
 		globalSecurityRectangle = securityRectangle;
 	}
+	
+	/* Rectangle Already Exists */
 	else
 	{
-		
+		/* Move Rectangle */
 		globalRectangle.setBounds({
 				north: polygonNewCoords.getAt(indexMaxLat).lat(),
 				south: polygonNewCoords.getAt(indexMinLat).lat(),
@@ -234,41 +295,52 @@ function rectangleDrawer() {
 			}
 			);
 		
+		/* Move Rectangle Security */
 		globalSecurityRectangle.setBounds({
 				north: polygonNewCoords.getAt(indexMaxLat).lat()+0.000075,
 				south: polygonNewCoords.getAt(indexMinLat).lat()-0.000075,
 				east: polygonNewCoords.getAt(indexMaxLng).lng()+0.0001,
 				west: polygonNewCoords.getAt(indexMinLng).lng()-0.0001
-			}
-			);
+		});
 	}
 }
+
+
 
 /* Function for send all GPS locations and file download redirection */
 
 function wayDrawer() {
 
+	/* Check that an altitude exists */
 	if (document.forms["form"]["altitudeAttribute"].value == null || document.forms["form"]["altitudeAttribute"].value == "")
 	{
 		alert("Vous devez renseigner une hauteur de vol");
 	}
 	else
 	{
+		/* Rectangle et Rectangle Security Data Acquisition */
 		var rectangleBounds = globalRectangle.getBounds();
 		var rectangleNorthEast = rectangleBounds.getNorthEast();
 		var rectangleSouthWest = rectangleBounds.getSouthWest();
+		
+		/* Variables Initialisation */
 		var elevationNorthEast = -123456789;
 		var elevationSouthWest = -123456789;
 		var locations = [];
+
+		/* Altitude Data Acquisition */
 		var heightQuadcopter = document.forms["form"]["altitudeAttribute"].value;
 
+		/* Locations Variables Creation */
 		locations.push(new google.maps.LatLng(rectangleNorthEast.lat(),rectangleNorthEast.lng()));
 		locations.push(new google.maps.LatLng(rectangleSouthWest.lat(),rectangleSouthWest.lng()));
 
+		/* Positional Request Variable Creation */
 		var positionalRequest = {
 			'locations': locations
 		};
 
+		/* Rectangle Elevation Acquisition - Google Map API */
 		var elevator = new google.maps.ElevationService();
 		var statusGlobal = 0;
 		elevator.getElevationForLocations(positionalRequest, function(results, status) {
@@ -283,10 +355,14 @@ function wayDrawer() {
 			}
 		});
 
+
+			/* Timeout to wait Google Map API Elevation data */
 			setTimeout(function redirect()
 			{
+				/* Check that elevation is not the initialisation value */ 
 				if (elevationNorthEast !=-123456789 & elevationSouthWest!=-123456789)
 				{
+					/* Find the maximal elevation */
 					var elevation;
 
 					if (elevationSouthWest >= elevationNorthEast)
@@ -298,10 +374,13 @@ function wayDrawer() {
 						elevation = elevationNorthEast;
 					}
 
+					/* createNavigation PHP Script redirection with all data */
 					var url ="/scripts/createNavigation.php?NorthEastLat=" + rectangleNorthEast.lat() + "&NorthEastLng=" + rectangleNorthEast.lng() 						+ "&SouthWestLat=" + rectangleSouthWest.lat()+ "&SouthWestLng=" + rectangleSouthWest.lng() + "&Elevation=" + elevation + 						"&HeightQuadcopter=" + heightQuadcopter + "&StartLat=" + globalMarker.getPosition().lat() + "&StartLng=" + 						globalMarker.getPosition().lng();
 	
 					document.location.href = url;
 				}
+				
+				/* Elevation values are initialisation values */
 				else
 				{
 					alert("L'altitude de la zone géographique n'a pas pu déterminée");

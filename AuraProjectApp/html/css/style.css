@@ -1,3 +1,11 @@
+/*--------------------------------------
+----------------------------------------
+------- AURA PROJECT APP-  STYLE -------
+----------------------------------------
+--------------------------------------*/
+
+/* Banner Style */
+
 #banner {
 	position : absolute;
 	top : 0%;
@@ -24,6 +32,10 @@
 	max-height : 90%;
 }
 
+
+
+/* Tools Style */
+
 #tools {
 	position : absolute;
 	margin : 0%;
@@ -45,6 +57,10 @@
 	color : black;
 }
 
+
+
+/* Map Style */
+
 #map {
 	position : absolute;
 	top : 10%;
@@ -53,12 +69,19 @@
 	width : 75%;
 }
 
+
+
+/* Altitude Style */
 #altitude input{
 	margin-top : 5%;
 	height : 4%;
 	width : 15%;
 	font-size:2vh;
 }
+
+
+
+/* Valid Button Style */
 
 #validButton {
 	padding-top:8%
@@ -73,6 +96,10 @@
 	background-color:black;
 	border-radius: 20px;
 }
+
+
+
+/* Download Button Style */
 
 #downloadButton {
 	padding-top:8%
@@ -89,6 +116,10 @@
 	border-radius: 20px;
 }
 
+
+
+/* Localisation Button Style */
+
 #localisationButton input{
 	margin-left:10%;  
 	margin-right:30%; 
@@ -99,6 +130,11 @@
 	background-color:black;
 	border-radius: 20px;
 }
+
+
+
+/* Address Button Style */
+
 #addressButton {
 	margin-left:5%;
 	margin-left:2%; 
@@ -109,6 +145,10 @@
 	background-color:black;
 	border-radius: 20px;
 }
+
+
+
+/* Address Attribute Style */
 
 #addressAttribute {
 	margin-top:5%;

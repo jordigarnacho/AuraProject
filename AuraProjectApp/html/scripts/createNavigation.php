@@ -1,5 +1,11 @@
 ﻿<?php
+	/*--------------------------------------
+	----------------------------------------
+	-- AURA PROJECT APP - CreateNavigation -
+	----------------------------------------
+	--------------------------------------*/
 	
+	/* GET Values Acquisition */
 	$NorthEastLat = $_GET['NorthEastLat'];
 	$NorthEastLng = $_GET['NorthEastLng'];
 	$SouthWestLat = $_GET['SouthWestLat'];
@@ -8,32 +14,36 @@
 	$HeightQuadcopter = $_GET['HeightQuadcopter'];
 	$StartLat = $_GET['StartLat'];
 	$StartLng = $_GET['StartLng'];
-	
+
+	/* Others Data Deduction */
 	$NorthWestLat = $_GET['NorthEastLat'];
 	$NorthWestLng = $_GET['SouthWestLng'];
 	$SouthEastLat = $_GET['SouthWestLat'];
 	$SouthEastLng = $_GET['NorthEastLng'];
 
+	/* Camera Parameters */
 	$cameraLarger = 0.001;
 	$cameraCoeff = 1;
 
-
+	/* TEST PRINTS */
 	echo 'NorthEast= ('.$NorthEastLat.','.$NorthEastLng.')<br/>';
 	echo 'NorthWest= ('.$NorthWestLat.','.$NorthWestLng.')<br/>';
 	echo 'SouthEast= ('.$SouthEastLat.','.$SouthEastLng.')<br/>';
 	echo 'SouthWest= ('.$SouthWestLat.','.$SouthWestLng.')<br/>';
 	
-	/* Km */
-	
+	/* Distance Calculation in Kilometers */	
 	$rectangleNorthFace = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($NorthWestLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($NorthWestLat))*cos(deg2rad		($NorthEastLng-$NorthWestLng)))*6371;
 	$rectangleEastFace = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($SouthEastLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($SouthEastLat))*cos(deg2rad		($NorthEastLng-$SouthEastLng)))*6371;
 	$rectangleSouthFace = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($SouthEastLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($SouthEastLat))*cos(deg2rad		($SouthWestLng-$SouthEastLng)))*6371;
 	$rectangleWestFace = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($NorthWestLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($NorthWestLat))*cos(deg2rad		($SouthWestLng-$NorthWestLng)))*6371;
+	
+	/* TEST PRINTS */
 	echo 'North = '.$rectangleNorthFace.'<br/>';
 	echo 'South = '.$rectangleSouthFace.'<br/>';
 	echo 'East = '.$rectangleEastFace.'<br/>';
 	echo 'West = '.$rectangleWestFace.'<br/>';
 
+	/* Find the biggest face and calculate the number of divisions */
 	if ((($rectangleNorthFace + $rectangleSouthFace)/2.0) >= (($rectangleEastFace + $rectangleWestFace)/2.0))
 	{
 		$division = (($rectangleNorthFace + $rectangleSouthFace)/(2.0*$cameraCoeff*$HeightQuadcopter*$cameraLarger));
@@ -43,8 +53,10 @@
 		$division = (($rectangleEastFace + $rectangleWestFace)/(2.0*$cameraCoeff*$HeightQuadcopter*$cameraLarger)); 
 	}
 
+	/* TEST PRINTS */
 	echo 'Division = '.$division.'<br/>';
 
+	/* Distance Calculation in Kilometers to find the First Location */
 	$startToNorthEast = acos(sin(deg2rad($NorthEastLat))*sin(deg2rad($StartLat))+cos(deg2rad($NorthEastLat))*cos(deg2rad($StartLat))*cos(deg2rad($NorthEastLng-$StartLng)))*6371;
 
 	$startToNorthWest = acos(sin(deg2rad($NorthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($NorthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad($NorthWestLng-$StartLng)))*6371;
@@ -53,6 +65,7 @@
 
 	$startToSouthWest = acos(sin(deg2rad($SouthWestLat))*sin(deg2rad($StartLat))+cos(deg2rad($SouthWestLat))*cos(deg2rad($StartLat))*cos(deg2rad($SouthWestLng-$StartLng)))*6371;
 
+	/* Find the nearest location of the start location */
 	if($startToNorthEast <= $startToNorthWest & $startToNorthEast <= $startToSouthEast & $startToNorthEast <= $startToSouthWest)
 	{
 		echo ("NordEast");
