@@ -47,10 +47,12 @@
 	if ((($rectangleNorthFace + $rectangleSouthFace)/2.0) >= (($rectangleEastFace + $rectangleWestFace)/2.0))
 	{
 		$division = (($rectangleNorthFace + $rectangleSouthFace)/(2.0*$cameraCoeff*$HeightQuadcopter*$cameraLarger));
+		$biggestFace = "NorthSouth";
 	}
 	else
 	{
 		$division = (($rectangleEastFace + $rectangleWestFace)/(2.0*$cameraCoeff*$HeightQuadcopter*$cameraLarger)); 
+		$biggestFace = "EastWest";
 	}
 
 	/* TEST PRINTS */
@@ -68,26 +70,78 @@
 	/* Find the nearest location of the start location */
 	if($startToNorthEast <= $startToNorthWest & $startToNorthEast <= $startToSouthEast & $startToNorthEast <= $startToSouthWest)
 	{
-		echo ("NordEast");
+		echo ("NorthEast");
+		$startLocation = "NorthEast";
 	}
 	else
 	{
 		if($startToNorthWest <= $startToNorthEast & $startToNorthWest <= $startToSouthEast & $startToNorthWest <= $startToSouthWest)
 		{
-			echo ("NordWest");
+			echo ("NorthWest");
+			$startLocation = "NorthWest";
 		}
 		else
 		{
 			if($startToSouthEast <= $startToNorthEast & $startToSouthEast <= $startToNorthWest & $startToSouthEast <= $startToSouthWest)
 			{
 				echo ("SouthEast");
+				$startLocation = "SouthEast";
 			}
 			else 
 			{
 				echo ("SouthWest");
+				$startLocation = "SouthWest";
 			}
 		}
 	}
+
+
+	/* Path creation according to the startPosition */
+
+	switch ($startLocation) {
+
+		/* North East Case */
+		case "NorthEast":{
+
+			/* First GPS position initialisation */
+			$GPSLatPath[0] = $NorthEastLat;
+			$GPSLngPath[0] = $NorthEastLng;
+			
+			/* North/South is the biggest face */
+			if $biggestFace = "NorthSouth"
+			{
+
+				for ($i = 0; $i < ($rectangleNorthFace + $rectangleSouthFace)/2.0); $i = $i + $division)
+				{
+
+				}
+			}
+
+			else
+			{
+				
+			}
+	 	}
+        	break;
+    		
+		/* North West Case */
+		case "NorthWest":
+			//code to be executed if n=label2;
+		break;
+	    
+		/* South East Case */
+		case "SouththEast":
+			//code to be executed if n=label3;
+		break;
+	   
+		/* South West Case */
+		default:
+			//code to be executed if n is different from all labels;
+	} 
+
+
+
+
 /*
 
 	$fileName = md5(microtime(TRUE)*100000);
