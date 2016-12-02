@@ -12,6 +12,7 @@ var globalPosition;
 var globalMarker;
 var globalRectangle;
 var globalSecurityRectangle;
+var globalPath;
 
 
 
@@ -386,6 +387,57 @@ function wayDrawer() {
 					alert("L'altitude de la zone géographique n'a pas pu déterminée");
 				}
 			},1000);
+	}
+}
+
+function showMap() {
+
+	/* Initialisation GPS Location */
+	var GPSPosition = {lat:45.91926,lng:6.157999600000039};
+
+
+	/* Map creation - Google Map API */
+	var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 19,
+		center: GPSPosition,
+		scrollwheel: true,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+	globalMap = map;
+}
+
+function addPathPoint(lat,lng,coordNb) {
+
+	if (globalPath == null)
+	{
+		var myPlanCoordinates = new Array();
+		for(i=0; i<(coordNb-1); i = i+1)
+		{
+			myPlanCoordinates.push(new google.maps.LatLng(lat[i], lng[i]));
+		}
+		window.alert(i);
+
+		/* Initialisation Marker - Google Map API */
+		var marker = new google.maps.Marker({
+			position: myPlanCoordinates[0],
+			map: globalMap,
+			title: "Position GPS"
+		});
+
+		
+	
+		var myPath = new google.maps.Polyline({
+		  path: myPlanCoordinates,
+		  geodesic: true,
+		  strokeColor: '#FF0000',
+		  strokeOpacity: 1.0,
+		  strokeWeight: 2
+		});
+	
+		globalMarker = marker;
+
+		myPath.setMap(globalMap);
+		globalPath = myPath;
 	}
 }
 

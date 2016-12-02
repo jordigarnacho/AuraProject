@@ -158,3 +158,15 @@
 	width : 60%;
 }
 
+
+
+/* Map Viewer Style */
+
+#mapViewer {
+	position : absolute;
+	top : 10%;
+	left: 0%;
+	height : 90%;
+	width : 100%;
+}
+

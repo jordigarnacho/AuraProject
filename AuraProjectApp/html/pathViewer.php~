@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="fr">
+	<head>
+		<!-- Page Charset Attribute  -->
+		<meta charset="utf-8">
+
+		<!-- Include CSS Script -->
+		<link rel="stylesheet" href="css/style.css" />
+
+		<!-- Page Icon -->
+		<link rel="icon" href="images/favIconAura16x16.ico" type="image/x-icon"/>
+
+		<!-- Page Shortcut Icon -->
+		<link rel="shortcut icon" href="images/favIconAura16x16.ico" type="image/x-icon"/>
+
+		<!-- Page Title -->
+		<title>Aura Project - WEB App</title>
+	</head>
+	<body onload="initMap();">
+
+		<!-- Banner Division -->
+		<div id="banner">
+			<!-- Banner Icon-->
+			<img src="images/logoAura.png" alt="Logo Aura">
+
+			<!-- Banner Title -->
+			<p>Aura Project - Web App</p>
+		</div>
+
+		<!-- Map Division -->
+		<div id="mapViewer"></div>
+		
+		<!-- Include Javascript Scripts-->
+		<script type="text/javascript" src="scripts/manageMap.js"></script>
+		
+		<!-- Google Map API connexion -->
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2jhV8KMnKTHYngS-SBc-fp3g3cfS-ZEc"></script>
+	</body>
+</html>

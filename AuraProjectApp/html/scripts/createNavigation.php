@@ -155,9 +155,13 @@
 							{
 								$GPSLatPath[$IndexGPSPath] = $Lat;
 								$GPSLngPath[$IndexGPSPath] = $Lng;
-								$IndexGPSPath = $IndexGPSPath + 1;
+								$IndexGPSPath = $IndexGPSPath + 1;	
 							}
-						}				
+							$Lng = $LngLimit;
+							$GPSLatPath[$IndexGPSPath] = $Lat;
+							$GPSLngPath[$IndexGPSPath] = $Lng;
+							$IndexGPSPath = $IndexGPSPath + 1;
+						}		
 					}
 				}	
 			}
@@ -346,13 +350,17 @@
 	}
 	
 	$fileName = md5(microtime(TRUE)*100000);
-	$type = "application/csv";
-	$myFile = fopen('../navigationMaps/'.$fileName.'.csv', 'w');
+	$type = "application/txt";
+	$myFile = fopen('../navigationMaps/'.$fileName.'.txt', 'w');
+
+	$GPSElevation = $Elevation + $HeightQuadcopter;
+	fwrite ($myFile, $GPSElevation); // On y met les données
+	fputs($myFile, "\n");
     
 	for ($Index = 0 ; $Index<count($GPSLngPath) ; $Index++)
     	{
 		fwrite ($myFile, $GPSLatPath[$Index]); // On y met les données
-		fwrite ($myFile, ',');
+		fwrite ($myFile, "\n");
 		fwrite ($myFile, $GPSLngPath[$Index]); // On y met les données
 		fputs($myFile, "\n"); 
     	}
@@ -361,14 +369,15 @@
 	
 	// Création des headers, pour indiquer au navigateur qu'il s'agit d'un fichier à télécharger
 	header('Content-Transfer-Encoding: binary'); //Transfert en binaire (fichier)
-	header('Content-Disposition: attachment; filename="MyAuraProjectPath".csv'); //Nom du fichier
-	header('Content-Length: '.filesize('../navigationMaps/'.$fileName.'.csv')); //Taille du fichier
+	header('Content-Disposition: attachment; filename="MyAuraProjectPath.txt"'); //Nom du fichier
+	header('Content-Length: '.filesize('../navigationMaps/'.$fileName.'.txt')); //Taille du fichier
 	header("Cache-Control: must-revalidate, post-check=0, pre-check=0, public");
 	header("Content-Transfer-Encoding: $type\n"); // Surtout ne pas enlever le \n
 	header("Pragma: no-cache");
 	header("Expires: 0");
 	
 	//Envoi du fichier dont le chemin est passé en paramètre
-	readfile('../navigationMaps/'.$fileName.'.csv'); 
+	//readfile('../navigationMaps/'.$fileName.'.txt'); 
+	header('Location: ../showMap.php?fileName='.$fileName);    
 
 ?>

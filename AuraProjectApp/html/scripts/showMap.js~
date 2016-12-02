@@ -1,0 +1,69 @@
+/*--------------------------------------
+----------------------------------------
+---- AURA PROJECT APP - MAP SCRIPTS ----
+----------------------------------------
+--------------------------------------*/
+
+/* Global variables*/
+
+var globalMap;
+
+/* Map initialisation */
+
+function initMap() {
+
+	/* Initialisation Rectangle Height */
+	var rectangleHeight = 0.0004;
+
+	/* Initialisation Rectangle Width */
+	var rectangleWidth = 0.0004;
+
+	/* Initialisation GPS Location */
+	var GPSPosition = {lat:45.91926,lng:6.157999600000039};
+
+	/* Map creation - Google Map API */
+	var map = new google.maps.Map(document.getElementById('mapDiv'), {
+		zoom: 19,
+		center: GPSPosition,
+		scrollwheel: true,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+
+	/* Initialisation Marker - Google Map API */
+	var marker = new google.maps.Marker({
+		position: GPSPosition,
+		map: map,
+		title: "Position GPS",
+		draggable:true
+	});
+	
+	
+	/* Polygon s Path Initialisation */
+	var polygonCoords = [
+		{lat: GPSPosition.lat-(rectangleHeight/2), lng: GPSPosition.lng-(rectangleWidth/2)},
+		{lat: GPSPosition.lat-(rectangleHeight/2), lng: GPSPosition.lng+(rectangleWidth/2)},
+		{lat: GPSPosition.lat+(rectangleHeight/2), lng: GPSPosition.lng+(rectangleWidth/2)},
+		{lat: GPSPosition.lat+(rectangleHeight/2), lng: GPSPosition.lng-(rectangleWidth/2)}
+	];
+	
+	/* Polygon creation */
+	var polygon = new google.maps.Polygon({
+		paths: polygonCoords,
+		strokeColor: '#FF0000',
+		strokeOpacity: 0.8,
+		strokeWeight: 2,
+		fillColor: '#FF0000',
+		fillOpacity: 0.35,
+		draggable:true,
+		editable:true
+	});
+	
+	/* Polygon-Map association */
+	polygon.setMap(map);
+
+	/* Global Variables Update */
+	globalMarker = marker;
+	globalPolygon = polygon;
+	globalMap = map;
+}
+
