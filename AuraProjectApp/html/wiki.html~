@@ -207,7 +207,7 @@
 							<p class="code">$ sudo docker pull jordigarnacho/auraproject</p>
 							<p>Ainsi, l'image auraproject va être téléchargée.<br>
 							   Une fois cette étape réalisée, nous allons lancer cette image afin de générer le conteneur et exécuter l'application.</br>Pour cela, nous utilisons la commande suivante.</p>
-							<p class="code">$ sudo docker run -t -i -p 1800:80 jordigarnacho/auraproject /bin/bash</p>
+							<p class="code">$ sudo docker run -t -i -p 1800:1800 jordigarnacho/auraproject /bin/bash</p>
 							<p>A présent, il vous est possible d'accéder à l'application WEB via votre navigateur internet.</br>
 							pour cela, rendez-vous à l'adresse suivante</p>
 							<p class="code">localhost:1800</p>

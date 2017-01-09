@@ -23,7 +23,7 @@
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
 	</head>
-	<body class="homepage">
+	<body>
 
 	<!-- Header -->
 		<div id="header">
@@ -44,7 +44,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<h1><a href="#">Aura Project</a></h1>
+					<h1><a href="index.html">Aura Project</a></h1>
 					<span class="tag">Polytech Annecy-Chambéry</span>
 				</div>
 			</div>

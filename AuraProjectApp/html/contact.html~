@@ -24,7 +24,7 @@
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
 	</head>
-	<body class="homepage">
+	<body>
 
 	<!-- Header -->
 		<div id="header">
@@ -58,19 +58,10 @@
 				<section>
 					<header>
 						<h2>Contact</h2>
-						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+						<span class="byline">Une question ? Ecrivez-nous !</span>
 					</header>
-					<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Donec nonummy magna quis risus. Quisque eleifend. Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.</p>
-					<p>Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus.</p>
-					
-					<form id="contact" method="post" action="envoi.php">
-					    	<p><label for="nom">Nom :</label><input type="text" id="nom" name="nom" tabindex="1" /></p>
-				    		<p><label for="email">Email :</label><input type="text" id="email" name="email" tabindex="2" /></p>
-							    
-						<p><label for="message">Message :</label><textarea id="message" name="message" tabindex="4" cols="50" rows="8"></textarea></p>
-	
-						<div style="text-align:center;"><input type="submit" name="envoi" value=" Envoyer " /></div>
-				    	</form>							
+					<p>N'hésitez pas à nous contacter pour toute question relative à notre projet.</p>
+					<a href="mailto:jordi.garnacho@etu.univ-smb.fr" class="button button-style1">Nous écrire</a>
 
 				</section>
 			</div>

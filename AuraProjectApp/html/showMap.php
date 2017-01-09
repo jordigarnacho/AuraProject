@@ -80,7 +80,7 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Accueil</a></li>
-						<li><a href="webapp.php">WebApp</a></li>
+						<li><a href="webapp.html">WebApp</a></li>
 						<li><a href="github.html">GitHub</a></li>
 						<li><a href="docker.html">Docker</a></li>
 						<li><a href="wiki.html">Wiki</a></li>
@@ -92,7 +92,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<h1><a href="#">Aura Project</a></h1>
+					<h1><a href="index.html">Aura Project</a></h1>
 					<span class="tag">Polytech Annecy-Chambéry</span>
 				</div>
 			</div>
@@ -117,26 +117,8 @@
 					<!-- Sidebar -->
 					<div id="sidebar" class="4u">
 						<section>
-							<!-- Step 1 -->
 							<p>Êtes-vous prêt pour le décollage ?</p>
-							<?php echo"<p>L'altitude sera de ".$altitude."mètres</p>"?>
-		
-		
-							<!-- Attribute Form -->
-							<form name="form"style="padding-top:10%">
-								Changer de parcours :
-								<!-- Open other file -->
-								<SELECT name="MapList">
-								<?php
-
-									if($mapFolder = opendir('./navigationMaps'))
-									while(false !== ($file = readdir($mapFolder)))
-									{
-										echo "<OPTION>".$file;
-									}
-
-								?>			
-								<input id="addressButton"type="button" name="validAddresse" value="OK" onclick="location.href = 'showMap.php?fileName=';">
+							<?php echo"<p>L'altitude de vol sera de ".$altitude."mètres</p>"?>
 
 								<!-- Validation Division -->
 								<a style="text-decoration:none;" href="./scripts/startNavigation.php?fileName=<?php echo $fileName?>"><div id="validButton" "><input type="button" name="validate" value="Décollage"></div></a>

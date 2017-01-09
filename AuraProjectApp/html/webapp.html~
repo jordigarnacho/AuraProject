@@ -99,9 +99,6 @@
 								<!-- Altitude Division -->
 								<div id="altitude">Hauteur (m) : <input id="altitudeAttribute" type="text" name="altitude"></div></br>
 
-								<!-- FileName Division -->
-								<div id="fileName">Nom du parcours: <input id="fileNameAttribute" type="text" name="fileName"></div></br>
-
 								<!-- Validation Division -->
 								<div id="validButton"><input type="button" name="validate" value="Recadrer" onclick="rectangleDrawer();"></div> </br>
 

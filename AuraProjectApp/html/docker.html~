@@ -61,6 +61,7 @@
 								<h2>Docker</h2>
 								<span class="byline">Une solution simple et universelle</span>
 							</header>
+							<img src="images/docker.png" alt="" width=250px>
 							<p>L'objectif de notre solution était de réaliser une solution simple et efficace de reconstruction 3D d'une zone géographique. Dans cette vision de simplicité et d'universalité de notre solution, nous avons choisi de créer un conteneur regroupant tout les éléments nécessaire pour notre application. Ainsi, le conteneur de notre solution est téléchargeable via le logiciel Docker et son Hub de projet. Pour accéder à l'adresse du Docker Hub du projet rendez-vous à l'adresse :<a href="https://hub.docker.com/r/jordigarnacho/auraproject/">https://hub.docker.com/r/jordigarnacho/auraproject/</a></p>
 						</section>
 					</div>
@@ -108,38 +109,32 @@
 		<div id="tweet">
 			<div class="container">
 				<section>
-					<blockquote>&ldquo;In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat.&rdquo;</blockquote>
+					<blockquote>&ldquo;Développons un drone autonome tout en gardant les pieds sur Terre.&rdquo;</blockquote>
 				</section>
 			</div>
 		</div>
-	<!-- /Tweet -->
 
 	<!-- Footer -->
 		<div id="footer">
 			<div class="container">
 				<section>
 					<header>
-						<h2>Get in touch</h2>
-						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+						<h2>Suivez-nous</h2>
+						<span class="byline">Rendez-vous sur notre page Facebook</span>
 					</header>
 					<ul class="contact">
-						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
-						<li class="active"><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
-						<li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li>
-						<li><a href="#" class="fa fa-tumblr"><span>Google+</span></a></li>
+						<li class="active"><a href="https://www.facebook.com/auraproject74/" class="fa fa-facebook"><span>Facebook</span></a></li>
 					</ul>
 				</section>
 			</div>
 		</div>
-	<!-- /Footer -->
 
 	<!-- Copyright -->
 		<div id="copyright">
 			<div class="container">
-				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+				Contact: <a href="mailto:jordi.garnacho@etu.univ-smb.fr">AuraProject</a>
 			</div>
 		</div>
-
 
 	</body>
 </html>
