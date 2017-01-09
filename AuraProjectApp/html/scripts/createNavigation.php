@@ -26,7 +26,7 @@
 	$cameraCoeff = 1;
 
 	/* GPS Location Interval Calculation*/
-	$GPSInterval = 0.000001;
+	$GPSInterval = 0.00001;
 
 	/* TEST PRINTS */
 	//echo 'NorthEast= ('.$NorthEastLat.','.$NorthEastLng.')<br/>';
@@ -103,121 +103,76 @@
 
 		/* North East Case */
 		case "NorthEast":{
-
-			/* First GPS position initialisation */
-			$GPSLatPath[0] = $NorthEastLat;
-			$GPSLngPath[0] = $NorthEastLng;
-			
+				
 			/* East/West is the biggest face */
 			if ($biggestFace == "EastWest")
-			{		
+			{
 				/* Sweeping Interval Calculation */
 				$IntervalSweeping = ((($NorthEastLng + $SouthEastLng)/2) - (($NorthWestLng + $SouthWestLng)/2))/$division;
+				
+				/* First GPS position initialisation */
+				$GPSLatPath[0] = $NorthEastLat;
+				$GPSLngPath[0] = $NorthEastLng-($IntervalSweeping/2);
 				
 				/* GPSPath Index Initialisation */
 				$IndexGPSPath = 1;
 
-				for ($Lng = $NorthEastLng; $Lng >= $NorthWestLng; $Lng = $Lng - ($IntervalSweeping*2))
+				for ($LngGeneral = $GPSLngPath[0]; $LngGeneral-($IntervalSweeping*2) > ($NorthWestLng-$IntervalSweeping); $LngGeneral = $LngGeneral - ($IntervalSweeping*2))
 				{
 					for ($Lat = $NorthEastLat; $Lat >= $SouthEastLat; $Lat = $Lat - $GPSInterval)
 					{
 						$GPSLatPath[$IndexGPSPath] = $Lat;
-						$GPSLngPath[$IndexGPSPath] = $Lng;
+						$GPSLngPath[$IndexGPSPath] = $LngGeneral;
 						$IndexGPSPath = $IndexGPSPath + 1;
 					}
 
-					if (($Lng - $IntervalSweeping) >= $NorthWestLng)
+					$LngLimit = $LngGeneral-$IntervalSweeping;
+					for ($Lng = $LngGeneral; $Lng > $LngLimit; $Lng = $Lng - $GPSInterval)
 					{
-						$LngLimit = $Lng- $IntervalSweeping;
-						for ($Lng = $Lng; $Lng > $LngLimit; $Lng = $Lng - $GPSInterval)
-						{
-							$GPSLatPath[$IndexGPSPath] = $Lat;
-							$GPSLngPath[$IndexGPSPath] = $Lng;
-							$IndexGPSPath = $IndexGPSPath + 1;	
-						}
-						$Lng = $LngLimit;
+						$GPSLatPath[$IndexGPSPath] = $Lat;
+						$GPSLngPath[$IndexGPSPath] = $Lng;
+						$IndexGPSPath = $IndexGPSPath + 1;	
+					}
+					$Lng = $LngLimit;
+					$GPSLatPath[$IndexGPSPath] = $Lat;
+					$GPSLngPath[$IndexGPSPath] = $Lng;
+					$IndexGPSPath = $IndexGPSPath + 1;
+
+					for ($Lat = $Lat; $Lat <= $NorthWestLat; $Lat = $Lat + $GPSInterval)
+					{
 						$GPSLatPath[$IndexGPSPath] = $Lat;
 						$GPSLngPath[$IndexGPSPath] = $Lng;
 						$IndexGPSPath = $IndexGPSPath + 1;
-
-						
-						for ($Lat = $Lat; $Lat <= $NorthWestLat; $Lat = $Lat + $GPSInterval)
-						{
-							$GPSLatPath[$IndexGPSPath] = $Lat;
-							$GPSLngPath[$IndexGPSPath] = $Lng;
-							$IndexGPSPath = $IndexGPSPath + 1;
-						}
-					
-						if (($Lng - $IntervalSweeping) >= $NorthWestLng)
-						{
-							$LngLimit = $Lng- $IntervalSweeping;
-							for ($Lng = $Lng; $Lng > $LngLimit; $Lng = $Lng - $GPSInterval)
-							{
-								$GPSLatPath[$IndexGPSPath] = $Lat;
-								$GPSLngPath[$IndexGPSPath] = $Lng;
-								$IndexGPSPath = $IndexGPSPath + 1;	
-							}
-							$Lng = $LngLimit;
-							$GPSLatPath[$IndexGPSPath] = $Lat;
-							$GPSLngPath[$IndexGPSPath] = $Lng;
-							$IndexGPSPath = $IndexGPSPath + 1;
-						}		
 					}
-				}	
+					$GPSLatPath[$IndexGPSPath] = $NorthWestLat;
+					$GPSLngPath[$IndexGPSPath] = $Lng;
+					$IndexGPSPath = $IndexGPSPath + 1;
+						
+						
+					$LngLimit = $LngGeneral- ($IntervalSweeping*2);
+					for ($Lng = $Lng; $Lng > $LngLimit; $Lng = $Lng - $GPSInterval)
+					{
+						$GPSLatPath[$IndexGPSPath] = $Lat;
+						$GPSLngPath[$IndexGPSPath] = $Lng;
+						$IndexGPSPath = $IndexGPSPath + 1;	
+					}
+					$Lng = $LngLimit;
+					$GPSLatPath[$IndexGPSPath] = $Lat;
+					$GPSLngPath[$IndexGPSPath] = $Lng;
+					$IndexGPSPath = $IndexGPSPath + 1;	
+				}				
+				for ($Lat = $NorthEastLat; $Lat >= $SouthEastLat; $Lat = $Lat - $GPSInterval)
+				{
+					$GPSLatPath[$IndexGPSPath] = $Lat;
+					$GPSLngPath[$IndexGPSPath] = $LngGeneral;
+					$IndexGPSPath = $IndexGPSPath + 1;
+				}
+				
 			}
 
 			/* North/South is the biggest face */
 			else
-			{		
-				/* Sweeping Interval Calculation */
-				$IntervalSweeping = ((($NorthEastLng + $SouthEastLng)/2) - (($NorthWestLng + $SouthWestLng)/2))/$division;
-				
-				/* GPSPath Index Initialisation */
-				$IndexGPSPath = 1;
-
-				for ($Lat = $NorthEastLat; $Lat >= $SouthEastLat; $Lat = $Lat - ($IntervalSweeping*2))
-				{
-					for ($Lng = $NorthEastLng; $Lng >= $NorthWestLng; $Lng = $Lng - $GPSInterval)
-					{
-						$GPSLatPath[$IndexGPSPath] = $Lat;
-						$GPSLngPath[$IndexGPSPath] = $Lng;
-						$IndexGPSPath = $IndexGPSPath + 1;
-					}
-
-					if (($Lat - $IntervalSweeping) >= $SouthEastLat)
-					{
-						$LatLimit = $Lat- $IntervalSweeping;
-						for ($Lat = $Lat; $Lat > $LatLimit; $Lat = $Lat - $GPSInterval)
-						{
-							$GPSLatPath[$IndexGPSPath] = $Lat;
-							$GPSLngPath[$IndexGPSPath] = $Lng;
-							$IndexGPSPath = $IndexGPSPath + 1;	
-						}
-						$Lat = $LatLimit;
-						$GPSLatPath[$IndexGPSPath] = $Lat;
-						$GPSLngPath[$IndexGPSPath] = $Lng;
-						$IndexGPSPath = $IndexGPSPath + 1;
-
-						
-						for ($Lng = $Lng; $Lng <= $SouthEastLng; $Lng = $Lng + $GPSInterval)
-						{
-							$GPSLatPath[$IndexGPSPath] = $Lat;
-							$GPSLngPath[$IndexGPSPath] = $Lng;
-							$IndexGPSPath = $IndexGPSPath + 1;
-						}
-					
-						if (($Lat - $IntervalSweeping) >= $SouthEastLat)
-						{
-							$LatLimit = $Lat- $IntervalSweeping;
-							for ($Lat = $Lat; $Lat > $LatLimit; $Lat = $Lat - $GPSInterval)
-							{
-								$GPSLatPath[$IndexGPSPath] = $Lat;
-								$GPSLngPath[$IndexGPSPath] = $Lng;
-								$IndexGPSPath = $IndexGPSPath + 1;
-							}
-						}				
-					}
-				}	
+			{
 			}
 		}
         	break;

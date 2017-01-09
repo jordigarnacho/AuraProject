@@ -319,6 +319,10 @@ function wayDrawer() {
 	}
 	else
 	{
+		if (globalRectangle == null)
+		{
+			rectangleDrawer();
+		}
 		/* Rectangle et Rectangle Security Data Acquisition */
 		var rectangleBounds = globalRectangle.getBounds();
 		var rectangleNorthEast = rectangleBounds.getNorthEast();
@@ -415,7 +419,8 @@ function addPathPoint(lat,lng,coordNb) {
 		{
 			myPlanCoordinates.push(new google.maps.LatLng(lat[i], lng[i]));
 		}
-		window.alert(i);
+		
+		globalMap.panTo(myPlanCoordinates[0]);
 
 		/* Initialisation Marker - Google Map API */
 		var marker = new google.maps.Marker({

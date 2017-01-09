@@ -155,9 +155,13 @@
 							{
 								$GPSLatPath[$IndexGPSPath] = $Lat;
 								$GPSLngPath[$IndexGPSPath] = $Lng;
-								$IndexGPSPath = $IndexGPSPath + 1;
+								$IndexGPSPath = $IndexGPSPath + 1;	
 							}
-						}				
+							$Lng = $LngLimit;
+							$GPSLatPath[$IndexGPSPath] = $Lat;
+							$GPSLngPath[$IndexGPSPath] = $Lng;
+							$IndexGPSPath = $IndexGPSPath + 1;
+						}		
 					}
 				}	
 			}

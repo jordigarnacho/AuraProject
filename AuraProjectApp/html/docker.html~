@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<!--
+	Linear by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Aura Project - Docker</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+	</head>
+	<body>
+
+	<!-- Header -->
+		<div id="header">
+			<div id="nav-wrapper"> 
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Accueil</a></li>
+						<li><a href="webapp.html">WebApp</a></li>
+						<li><a href="github.html">GitHub</a></li>
+						<li><a href="docker.html">Docker</a></li>
+						<li><a href="wiki.html">Wiki</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="index.html">Aura Project</a></h1>
+					<span class="tag">Polytech Annecy-Chambéry</span>
+				</div>
+			</div>
+		</div>
+	<!-- Header --> 
+
+	<!-- Main -->
+		<div id="main">
+			<div class="container">
+				<div class="row">
+
+					<!-- Content -->
+					<div id="content" class="8u skel-cell-important">
+						<section>
+							<header>
+								<h2>Docker</h2>
+								<span class="byline">Une solution simple et universelle</span>
+							</header>
+							<p>L'objectif de notre solution était de réaliser une solution simple et efficace de reconstruction 3D d'une zone géographique. Dans cette vision de simplicité et d'universalité de notre solution, nous avons choisi de créer un conteneur regroupant tout les éléments nécessaire pour notre application. Ainsi, le conteneur de notre solution est téléchargeable via le logiciel Docker et son Hub de projet. Pour accéder à l'adresse du Docker Hub du projet rendez-vous à l'adresse :<a href="https://hub.docker.com/r/jordigarnacho/auraproject/">https://hub.docker.com/r/jordigarnacho/auraproject/</a></p>
+						</section>
+					</div>
+					<!-- Sidebar -->
+					<div id="sidebar" class="4u">
+						<section>
+							<header>
+								<h2>Besoin d'aide ?</h2>
+							</header>
+							<div class="row">
+								<section class="6u">
+									<ul class="default">
+										<li><a href="https://www.supinfo.com/articles/single/2908-docker-mais-c-est-quoi-docker">Docker, c'est quoi?</a></li>
+																				<li><a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/">Installer Docker sous Ubuntu</a></li>
+										<li><a href="https://docs.docker.com/engine/installation/windows/">Installer Docker sous Windows</a></li>
+									</ul>
+								</section>
+								<section class="6u">
+									<ul class="default">
+										<li><a href="<li><a href="https://www.wanadev.fr/23-tuto-docker-comprendre-docker-partie1/">Tutoriel sur Docker</a></li>
+										<li><a href="https://hub.docker.com/">DockerHub</a></li>
+									</ul>
+								</section>
+							</div>
+						</section>
+						<section>
+							<header>
+								<h2>Plus d'informations</h2>
+							</header>
+							<ul class="style">
+								<li>
+									<p class="posted">Site internet de Docker</p>
+									<p><a href="https://www.docker.com/">https://www.docker.com/</a></p>
+								</li>
+							</ul>
+						</section>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	<!-- /Main -->
+
+	<!-- Tweet -->
+		<div id="tweet">
+			<div class="container">
+				<section>
+					<blockquote>&ldquo;In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat.&rdquo;</blockquote>
+				</section>
+			</div>
+		</div>
+	<!-- /Tweet -->
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<section>
+					<header>
+						<h2>Get in touch</h2>
+						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+					</header>
+					<ul class="contact">
+						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+						<li class="active"><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li>
+						<li><a href="#" class="fa fa-tumblr"><span>Google+</span></a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	<!-- /Footer -->
+
+	<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+			</div>
+		</div>
+
+
+	</body>
+</html>

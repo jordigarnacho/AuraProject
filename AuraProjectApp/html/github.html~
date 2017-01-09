@@ -4,50 +4,9 @@
     templated.co @templatedco
     Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-
-<?php
-	// Check if a fileName exist
-	if (isset($_GET["fileName"])) {
-		$fileName = $_GET["fileName"];
-		//Open the file
-		$myFile = fopen('navigationMaps/'.$fileName.'.txt', 'r');
-
-		// Check if the file exist
-		if ($myFile != null)
-		{
-			// Read first line <=> altitude
-			$altitude = fgets($myFile);
-			
-			// Variable for count the number of coordonates
-			$coordNb = 0;
-
-			// Read line while a line exist
-			while(!feof($myFile))
-			{
-				// Read the latitude
-				$lat[$coordNb] = fgets($myFile);
-				
-				// Read the longitude
-				$lng[$coordNb] = fgets($myFile);
-
-				// Counter incrementation
-				$coordNb = $coordNb + 1;
-			}
-			// Close the file
-			fclose($myFile);
-
-			$str = '<script type="text/javascript">';
-        		$str .= "var lat = ".json_encode($lat).",";
-			$str .= "lng = ".json_encode($lng).",";
-			$str .= "coordNb = ".json_encode($coordNb).";";
-			$str .="</script>";
-			echo $str;
-		}
-	}
-?>
 <html>
 	<head>
-		<title>Aura Project - Web App</title>
+		<title>Aura Project - GitHub</title>
 		<link rel="icon" href="images/favIconAura16x16.ico" type="image/x-icon"/>
 		<link rel="shortcut icon" href="images/favIconAura16x16.ico" type="image/x-icon"/>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -63,15 +22,8 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>
-		
-		<!-- Include Javascript Scripts-->
-		<script type="text/javascript" src="scripts/manageMap.js"></script>
-		
-		<!-- Google Map API connexion -->
-		<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2jhV8KMnKTHYngS-SBc-fp3g3cfS-ZEc"></script>
 	</head>
-	<body onload="showMap(), addPathPoint(lat,lng,coordNb);">
+	<body class="homepage">
 
 	<!-- Header -->
 		<div id="header">
@@ -80,7 +32,7 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Accueil</a></li>
-						<li><a href="webapp.php">WebApp</a></li>
+						<li><a href="webapp.html">WebApp</a></li>
 						<li><a href="github.html">GitHub</a></li>
 						<li><a href="docker.html">Docker</a></li>
 						<li><a href="wiki.html">Wiki</a></li>
@@ -97,6 +49,7 @@
 				</div>
 			</div>
 		</div>
+	<!-- Header --> 
 
 	<!-- Main -->
 		<div id="main">
@@ -107,40 +60,47 @@
 					<div id="content" class="8u skel-cell-important">
 						<section>
 							<header>
-								<h2>Web App</h2>
+								<h2>GitHub</h2>
+								<span class="byline">Un projet ouvert à tous</span>
 							</header>
-							<!-- Map Division -->
-							<div id="map"></div>
+							<img src="images/github.png" alt="" width=250px>
+							<p>Nous avons choisi de rendre public l'ensemble des fichiers et codes développés par les membres du projet. De ce fait, il est possible à toute personne de participer et améliorer à la conception de la solution AuraPoject.</p>
+							<p>Dans cet objectif, l'intégralité de nos fichiers sont déposés et mis à jour sur la platforme GitHub.<p>
+							<p>Pour accéder à ceux-ci rendez-vous à l'adresse : <a href="https://github.com/jordigarnacho/AuraProject">https://github.com/jordigarnacho/AuraProject</a>.</p>
 						</section>
 					</div>
 
 					<!-- Sidebar -->
 					<div id="sidebar" class="4u">
 						<section>
-							<!-- Step 1 -->
-							<p>Êtes-vous prêt pour le décollage ?</p>
-							<?php echo"<p>L'altitude sera de ".$altitude."mètres</p>"?>
-		
-		
-							<!-- Attribute Form -->
-							<form name="form"style="padding-top:10%">
-								Changer de parcours :
-								<!-- Open other file -->
-								<SELECT name="MapList">
-								<?php
-
-									if($mapFolder = opendir('./navigationMaps'))
-									while(false !== ($file = readdir($mapFolder)))
-									{
-										echo "<OPTION>".$file;
-									}
-
-								?>			
-								<input id="addressButton"type="button" name="validAddresse" value="OK" onclick="location.href = 'showMap.php?fileName=';">
-
-								<!-- Validation Division -->
-								<a style="text-decoration:none;" href="./scripts/startNavigation.php?fileName=<?php echo $fileName?>"><div id="validButton" "><input type="button" name="validate" value="Décollage"></div></a>
-							</form>
+							<header>
+								<h2>Besoin d'aide ?</h2>
+							</header>
+							<div class="row">
+								<section class="6u">
+									<ul class="default">
+										<li><a href="https://openclassrooms.com/courses/gerer-son-code-avec-git-et-github/github-qu-est-ce-que-c-est">GitHub, c'est quoi?</a></li>
+										<li><a href="http://www.kommunauty.fr/article-933-apprendre-a-utiliser-github">Apprendre à utiliser GitHub</a></li>
+										<li><a href="http://fredods.com/github/">Installer Git sous Windows</a></li>
+									</ul>
+								</section>
+								<section class="6u">
+									<ul class="default">
+										<li><a href="https://doc.ubuntu-fr.org/git">Installer et utiliser Git sous Ubuntu</a></li>
+										<li><a href="https://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-Installation-de-Git">Installation de Git sur tous les systèmes</a></li>
+									</ul>
+								</section>
+							</div>
+						</section>
+						<section>
+							<header>
+								<h2>Plus d'informations</h2>
+							</header>
+							<ul class="style">
+								<li>
+									<p class="posted">Site internet de GitHub</p>
+									<p><a href="https://github.com/">https://github.com/</a></p>
+								</li>
 						</section>
 					</div>
 					

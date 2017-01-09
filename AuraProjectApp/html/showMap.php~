@@ -75,33 +75,28 @@
 		<div id="tools">
 		
 			<!-- Step 1 -->
-			<p>1. Tracez la zone à parcourir par le drone</p>
+			<p>Êtes-vous prêt pour le décollage ?</p>
+			<?php echo"<p>L'altitude sera de ".$altitude."mètres</p>"?>
 		
-			<!-- Step 2 -->
-			<p>2.Saisissez la hauteur de la prise de vue</p>
-
-			<!-- Step 3 -->
-			<p>3. Validez</p>
 		
 			<!-- Attribute Form -->
 			<form name="form"style="padding-top:10%">
+				Changer de parcours :
+				<!-- Open other file -->
+				<SELECT name="MapList">
+				<?php
 
-				<!-- Localisation Division -->
-				<div id="localisationButton"><input type="button" name="localisation" value="Ma position" onclick="findLocation();"></div>
+					if($mapFolder = opendir('./navigationMaps'))
+					while(false !== ($file = readdir($mapFolder)))
+					{
+						echo "<OPTION>".$file;
+					}
 
-				<!-- Address Division -->
-				<div id="address"> ou</br> <input name="addressAttribute" id="addressAttribute" type="text" name="adresse">
-					<input id="addressButton"type="button" name="validAddresse" value="OK" onclick="findAddress();">
-				</div>
-
-				<!-- Altitude Division -->
-				<div id="altitude">Hauteur (m) : <input id="altitudeAttribute" type="text" name="altitude"></div>
+				?>			
+				<input id="addressButton"type="button" name="validAddresse" value="OK" onclick="location.href = 'showMap.php?fileName=';">
 
 				<!-- Validation Division -->
-				<div id="validButton"><input type="button" name="validate" value="Valider" onclick="rectangleDrawer();"></div>
-
-				<!-- Download Division -->
-				<div id="downloadButton"><input type="button" name="download" value="Téléchager" onclick="addPathPoint(parseFloat(lat),parseFloat(lng),parseFloat(coordNb));"></div>
+				<a style="text-decoration:none;" href="./scripts/startNavigation.php?fileName=<?php echo $fileName?>"><div id="validButton" "><input type="button" name="validate" value="Décollage"></div></a>
 			</form>
 
 		</div>

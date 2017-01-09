@@ -1,4 +1,8 @@
 ﻿<?php
-	exec('gedit');
-	echo("Salut");
+	/*if (isset($_GET["fileName"])) {
+		$fileName = $_GET["fileName"];*/
+		system("cp ../navigationMaps/6b130a29da8215fa56824a3b0473042d.txt ../../../../home/jordi/SDK_drone/maps/6b130a29da8215fa56824a3b0473042d.txt");
+
+		//system("bash ./test.sh $fileName;");
+	//}
 ?>

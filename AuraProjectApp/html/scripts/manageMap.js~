@@ -313,7 +313,7 @@ function rectangleDrawer() {
 function wayDrawer() {
 
 	/* Check that an altitude exists */
-	if (document.forms["form"]["altitudeAttribute"].value == null || document.forms["form"]["altitudeAttribute"].value == "")
+	if (document.forms["form"]["altitudeAttribute"].value == null || document.forms["form"]["altitudeAttribute"].value == "" || globalRectangle == null)
 	{
 		alert("Vous devez renseigner une hauteur de vol");
 	}
@@ -415,7 +415,8 @@ function addPathPoint(lat,lng,coordNb) {
 		{
 			myPlanCoordinates.push(new google.maps.LatLng(lat[i], lng[i]));
 		}
-		window.alert(myPlanCoordinates[i]);
+		
+		globalMap.panTo(myPlanCoordinates[0]);
 
 		/* Initialisation Marker - Google Map API */
 		var marker = new google.maps.Marker({
